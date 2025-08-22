@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: ci-cd-app
+  labels:
+    app: ci-cd-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: ci-cd-app
+  template:
+    metadata:
+      labels:
+        app: ci-cd-app
+    spec:
+      containers:
+        - name: ci-cd-app
+          image: bayarmaa/ci-cd-lab:latest
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 3000
+
